@@ -1,7 +1,6 @@
 package main
 
 import (
-	"connect-postgres/data"
 	"context"
 	"database/sql"
 	"log"
@@ -14,8 +13,7 @@ import (
 )
 
 type Config struct {
-	DB     *sql.DB
-	Models data.Models
+	DB *sql.DB
 }
 
 func main() {
@@ -27,7 +25,7 @@ func main() {
 		log.Println("Failed trying to connect Postgres...")
 	}
 
-	app := Config{DB: conn, Models: data.New(conn)}
+	app := Config{DB: conn}
 
 	s := &http.Server{
 		Addr:         ":8080",
