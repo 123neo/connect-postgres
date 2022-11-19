@@ -1,13 +1,19 @@
 package main
 
-import "net/http"
+import (
+	"connect-postgres/handlers"
+	"log"
+	"net/http"
+)
 
-func (app *Config) routes() http.Handler {
-	// hh := handlers.NewRoot(l)
-	// gh := handlers.NewHello(l)
+func (app *Config) routes(l *log.Logger) http.Handler {
+
+	l.Println("in Routes")
 	mux := http.NewServeMux()
-	// mux.Handle("/", hh)
-	// mux.Handle("/hello", gh)
+
+	rootHandle := handlers.NewRoot(l)
+
+	mux.Handle("/", rootHandle)
 
 	return mux
 }

@@ -29,7 +29,7 @@ func main() {
 
 	s := &http.Server{
 		Addr:         ":8080",
-		Handler:      app.routes(),
+		Handler:      app.routes(l),
 		IdleTimeout:  120 * time.Second,
 		ReadTimeout:  1 * time.Second,
 		WriteTimeout: 1 * time.Second,
